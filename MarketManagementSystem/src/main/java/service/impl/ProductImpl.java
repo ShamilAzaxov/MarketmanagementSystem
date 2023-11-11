@@ -3,17 +3,16 @@ package service.impl;
 import entity.Category;
 import entity.Product;
 import entity.Sale;
-import service.inter.Marketable;
+import service.inter.ProductInter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-public class ProductImpl implements Marketable {
+public class ProductImpl implements ProductInter {
 
-    List<Product> products = new ArrayList<>();
+    private final List<Product> products = new ArrayList<>();
 
     @Override
     public boolean addProduct(Product product) {
@@ -64,40 +63,5 @@ public class ProductImpl implements Marketable {
             }
         }
         return product;
-    }
-
-    @Override
-    public boolean addSale(Sale sale) {
-        return  false;
-    }
-
-    @Override
-    public Product returnProductFromSale(String productName) {
-        return null;
-    }
-
-    @Override
-    public Sale returnSale(long saleNumber) {
-        return null;
-    }
-
-    @Override
-    public List<Sale> salesFromTimeToTime(LocalDateTime from, LocalDateTime to) {
-        return null;
-    }
-
-    @Override
-    public List<Sale> salesInDate(LocalDate day) {
-        return null;
-    }
-
-    @Override
-    public List<Sale> salesDueToPrice(long from, long to) {
-        return null;
-    }
-
-    @Override
-    public Sale saleDueToSaleNumber(long saleNumber) {
-        return null;
     }
 }

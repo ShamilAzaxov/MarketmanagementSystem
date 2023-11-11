@@ -1,18 +1,18 @@
 package service.impl;
 
-import entity.Category;
 import entity.Product;
 import entity.Sale;
-import service.inter.Marketable;
+import service.inter.ProductInter;
+import service.inter.SaleInter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SaleImpl implements Marketable {
+public class SaleImpl implements SaleInter {
 
-Marketable marketable = new ProductImpl();
+ProductInter marketable = new ProductImpl();
    private final List<Sale> sales = new ArrayList<>();
 
     @Override
@@ -23,7 +23,7 @@ Marketable marketable = new ProductImpl();
     @Override
     public Product returnProductFromSale(String productName) {
 
-        return marketable.returnProductFromSale(productName);
+        return marketable.getProductDueToName(productName);
     }
 
     @Override
@@ -71,33 +71,6 @@ Marketable marketable = new ProductImpl();
                 return sale;
             }
         }
-        return null;
-    }
-
-
-
-    @Override
-    public boolean addProduct(Product product) {
-        return false;
-    }
-
-    @Override
-    public Product changeProductFeature(String productCode, Product product) {
-        return null;
-    }
-
-    @Override
-    public List<Product> productDueToCategory(Category category) {
-        return null;
-    }
-
-    @Override
-    public List<Product> productsBetweenPrice(long from, long to) {
-        return null;
-    }
-
-    @Override
-    public Product getProductDueToName(String productName) {
         return null;
     }
 }
