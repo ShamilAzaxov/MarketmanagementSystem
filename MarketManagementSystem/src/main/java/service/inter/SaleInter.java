@@ -3,24 +3,27 @@ package service.inter;
 import entity.Product;
 import entity.Sale;
 
+import javax.swing.text.html.parser.Entity;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 public interface SaleInter {
 
-    public boolean addSale(Sale sale);
+    public Sale addSale(Sale sale);
 
-    public Product returnProductFromSale(String productName);
+    public boolean returnProductFromSale(int saleId, String productName);
 
-    public Sale returnSale(long saleNumber);
+    public Sale returnSale(Integer saleNumber);
 
-    public List<Sale> salesFromTimeToTime(LocalDateTime from, LocalDateTime to);
+    public List<Map.Entry> salesFromTimeToTime(LocalDateTime from, LocalDateTime to);
 
-    public List<Sale> salesInDate(LocalDate day);
+    public List<Map.Entry> salesInDate(LocalDate day);
 
-    public List<Sale> salesDueToPrice(long from, long to);
+    public List<Sale> salesDueToPrice(BigDecimal from, BigDecimal to);
 
-    public Sale saleDueToSaleNumber(long saleNumber);
+    public Map.Entry<Integer, Sale> saleDueToSaleNumber(Integer saleId);
 
 }

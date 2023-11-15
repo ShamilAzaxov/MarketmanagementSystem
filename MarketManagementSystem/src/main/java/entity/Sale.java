@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,8 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Sale {
+    Integer id;
     List<SaleItem> saleItems;
-    long saleNumber;
-    long salePrice;
+    BigDecimal salePrice;
     LocalDateTime saleTime;
 }
