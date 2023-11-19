@@ -2,15 +2,10 @@ package service.impl;
 
 import entity.Category;
 import entity.Product;
-import entity.Sale;
-import lombok.Data;
 import lombok.Getter;
 import service.inter.ProductInter;
 
-import javax.swing.plaf.TableHeaderUI;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +25,10 @@ public class ProductImpl implements ProductInter {
         else {
             for(Product theProduct : products) {
                 if (product.getProductCode().equals(theProduct.getProductCode())) {
+                    if (!theProduct.getProductName().equals(product.getProductName())) {
+                        System.err.println("\nBarcodes are same but names are not: Please correct it.\n");
+                        break;
+                    }
                     theProduct.setCount(theProduct.getCount() + product.getCount());
                     return true;
                 }
@@ -45,7 +44,7 @@ public class ProductImpl implements ProductInter {
 
     @Override
     public Product changeProductFeature(String productCode,Product product) {
-       Product theProduct = getProductDueToCode(productCode);
+       Product theProduct = getProductDueToBarcode(productCode);
        if(product.getProductName() != null)
            theProduct.setProductName(product.getProductName());
        if(product.getCount() != null)
@@ -59,7 +58,8 @@ public class ProductImpl implements ProductInter {
        return theProduct;
     }
 
-    private Product getProductDueToCode(String productCode){
+    @Override
+    public Product getProductDueToBarcode(String productCode){
         Product theProduct = null;
         for (Product product : products){
             if(product.getProductCode().equals(productCode)) {
@@ -71,34 +71,27 @@ public class ProductImpl implements ProductInter {
     }
 
     @Override
+    public String deleteProduct(String productCode) {
+        Product product = getProductDueToBarcode(productCode);
+        if(products.remove(product))
+            return product.toString();
+        return "\nOccurred a problem.\n";
+    }
+
+    @Override
     public List<Product> productDueToCategory(Category category) {
-        List<Product> sameCategoryProducts = new ArrayList<>();
-        for(Product product : products){
-            if(product.getCategory().equals(category)){
-                sameCategoryProducts.add(product);
-            }
-        }
-        return sameCategoryProducts;
+        return products.stream().filter(product -> product.getCategory().equals(category)).toList();
     }
 
     @Override
     public List<Product> productsBetweenPrice(BigDecimal from, BigDecimal to) {
-        List<Product> theProducts = new ArrayList<>();
-        for(Product product : products){
-            if(product.getPrice().compareTo(from) > 0 && product.getPrice().compareTo(to) <0)
-                theProducts.add(product);
-        }
-        return theProducts;
+        return products.stream().filter(product -> product.getPrice().compareTo(from)>0 &&
+                product.getPrice().compareTo(to)<0).toList();
     }
 
     @Override
     public Product getProductDueToName(String productName) {
-        Product product = null;
-        for (Product product1 : products){
-            if(product1.getProductName().equals(productName)){
-                product = product1;
-            }
-        }
-        return product;
+        return products.stream().filter(product -> product.getProductName().
+                equals(productName)).findFirst().orElseThrow(() -> new NullPointerException("There is no such product"));
     }
 }

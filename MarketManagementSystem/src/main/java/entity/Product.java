@@ -17,4 +17,3 @@ public class Product {
     Category category;
     Integer count;
 }
-

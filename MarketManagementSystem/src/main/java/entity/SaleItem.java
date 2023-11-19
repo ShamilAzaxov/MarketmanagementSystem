@@ -13,14 +13,24 @@ import java.math.BigDecimal;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SaleItem {
     Integer id;
-    String product;
+    Product product;
     Integer quantity;
     BigDecimal price;
 
     public SaleItem(Integer id, Product product, Integer quantity) {
         this.id = id;
-        this.product = product.getProductName();
+        this.product = product;
         this.quantity = quantity;
         this.price = product.getPrice().multiply(BigDecimal.valueOf(quantity));
+    }
+
+    @Override
+    public String toString() {
+        return "SaleItem{" +
+                "id=" + id +
+                ", product=" + product.getProductName() +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                '}';
     }
 }

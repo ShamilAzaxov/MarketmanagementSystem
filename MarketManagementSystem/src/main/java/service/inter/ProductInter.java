@@ -8,16 +8,20 @@ import java.util.List;
 
 public interface ProductInter {
 
-    public boolean addProduct(Product product);
+    boolean addProduct(Product product);
 
-    public Product changeProductFeature(String productCode, Product product);
+    Product changeProductFeature(String productCode, Product product);
 
-    public List<Product> productDueToCategory(Category category);
+     Product getProductDueToBarcode(String productCode);
 
-    public List<Product> productsBetweenPrice(BigDecimal from, BigDecimal to);
+    String deleteProduct(String productCode);
 
-    public Product getProductDueToName(String productName);
+    List<Product> productDueToCategory(Category category);
 
-    public List<Product> getProducts();
+    List<Product> productsBetweenPrice(BigDecimal from, BigDecimal to);
+
+    Product getProductDueToName(String productName);
+
+    List<Product> getProducts();
 
 }

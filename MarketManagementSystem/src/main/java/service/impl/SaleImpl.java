@@ -4,6 +4,7 @@ import entity.Product;
 import entity.Sale;
 import entity.SaleItem;
 import lombok.Getter;
+import operation.ProductOperation;
 import service.inter.ProductInter;
 import service.inter.SaleInter;
 
@@ -18,17 +19,16 @@ import java.util.Map;
 @Getter
 public class SaleImpl implements SaleInter {
 
-private ProductInter marketable = new ProductImpl();
+private ProductInter marketable = ProductOperation.getProductInter();
    private final HashMap<Integer, Sale> sales = new HashMap<>();
 
     @Override
     public Sale addSale(Sale sale) {
         Product product;
-        List<SaleItem> saleItems;
+        List<SaleItem> saleItems=sale.getSaleItems();
         Sale addSale = sales.put(sale.getId(), sale);
-        for(int i = 0; i<sale.getSaleItems().size();i++) {
-            saleItems = sale.getSaleItems();
-             product = marketable.getProductDueToName(sale.getSaleItems().get(i).getProduct());
+        for(int i = 0; i<saleItems.size();i++) {
+             product =saleItems.get(i).getProduct();
               product.setCount(product.getCount() - sale.getSaleItems().get(i).getQuantity());
             System.out.print(i+1 + "." + product.getProductName() + "               quantity - " +
                     sale.getSaleItems().get(i).getQuantity() + "                 product price - " + product.getPrice() + "                 sum of price - " +
@@ -39,13 +39,13 @@ private ProductInter marketable = new ProductImpl();
     }
 
     @Override
-    public boolean returnProductFromSale(int saleId, String productName) {
-        Product product = marketable.getProductDueToName(productName);
+    public boolean returnProductFromSale(int saleId, String barcode) {
+        Product product = marketable.getProductDueToBarcode(barcode);
         boolean removed = false;
         SaleItem saleItem;
         for(int i = 0; i<sales.get(saleId).getSaleItems().size(); i++){
             saleItem = sales.get(saleId).getSaleItems().get(i);
-          if(saleItem.getProduct().equals(product.getProductName())){
+          if(saleItem.getProduct().getProductCode().equals(product.getProductCode())){
               removed = sales.get(saleId).getSaleItems().remove(saleItem);
               product.setCount(product.getCount() +saleItem.getQuantity());
               break;
@@ -61,7 +61,7 @@ private ProductInter marketable = new ProductImpl();
         Sale sale = sales.get(saleId);
         int size = sale.getSaleItems().size();
         for (int i = 0; i < size; i++){
-            returnProductFromSale(saleId, sale.getSaleItems().get(0).getProduct());
+            returnProductFromSale(saleId, sale.getSaleItems().get(0).getProduct().getProductCode());
         }
         sale = sales.remove(saleId);
         return sale;
