@@ -7,6 +7,7 @@ import service.inter.ProductInter;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -34,7 +35,7 @@ public class ProductOperation {
                 System.out.print("Enter product barcode: ");
                 String productCode = scan.next();
                 System.out.println("Enter product category by number showed below: ");
-                for(int i = 0; i<categories.length;i++){
+                for(int i = 0; i<categories.length;i++){                //Burda tetbiq edemmedim stream
                     System.out.println(i+1 + "." +categories[i]);
                 }
                 Integer productCategory = scan.nextInt();
@@ -66,7 +67,7 @@ public class ProductOperation {
                 String productCode =  scan.nextLine();
                 productCode = scan.nextLine();
                 System.out.println("Product's features: ");
-                for (int i = 1; i<=productFields.length; i++) {
+                for (int i = 1; i<=productFields.length; i++) {  //Burda tetbiq edemmedim stream
                     System.out.print(i +"." + productFields[i-1] + "\n");
                 }
                 System.out.print("Enter the number of the feature you want to change: ");
@@ -96,9 +97,7 @@ public class ProductOperation {
                     }
                     case 4:{
                         System.out.println("Categories: ");
-                        for(Category category : categories){
-                            System.out.println(category.toString().toLowerCase());
-                        }
+                        Arrays.stream(categories).map(category -> category.toString().toLowerCase()).forEach(System.out::println); //Burda eledim
                         System.out.print("Enter product category : ");
                         String category = scan.nextLine();
                         category = scan.nextLine().toUpperCase();
@@ -135,18 +134,13 @@ public class ProductOperation {
                 break;
             }
             case 5: {
-                List<Product> products = new ArrayList<>();
-                for (Category category : categories){
-                    System.out.println(category);
-                }
+                Arrays.stream(categories).forEach(System.out::println); //Burda eledim
                 System.out.print("Enter a category: ");
                 String category = scan.nextLine();
                 category = scan.nextLine().toUpperCase();
                 Category category1 = Category.valueOf(category);
-                for (Product product : productInter.getProducts()){
-                    if(product.getCategory().equals(category1))
-                        products.add(product);
-                }
+               List<Product> products = productInter.getProducts().
+                       stream().filter(product1 -> product1.getCategory().equals(category1)).toList(); //Burda eledim
                 System.out.println(products);
                 Menu.showMenu();
                 break;

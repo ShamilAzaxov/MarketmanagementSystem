@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff1b74ab-6b76-4dab-8b55-c16a0545a649" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/operation/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/operation/ProductOperation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/operation/SaleOperation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Operations.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/SaleItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/SaleItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/operation/ProductOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/operation/ProductOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/operation/SaleOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/operation/SaleOperation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/impl/ProductImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/impl/ProductImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/impl/SaleImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/impl/SaleImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/inter/ProductInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/inter/ProductInter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/inter/SaleInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/inter/SaleInter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Operations.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/SaleItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/SaleItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/impl/ProductImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/impl/ProductImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/impl/SaleImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/impl/SaleImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/inter/ProductInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/inter/ProductInter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/inter/SaleInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/inter/SaleInter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +78,8 @@
       <updated>1699439103296</updated>
       <workItem from="1699439109097" duration="18071000" />
       <workItem from="1699690582230" duration="65501000" />
-      <workItem from="1700139772560" duration="38342000" />
+      <workItem from="1700139772560" duration="38682000" />
+      <workItem from="1700485509861" duration="11777000" />
     </task>
     <servers />
   </component>

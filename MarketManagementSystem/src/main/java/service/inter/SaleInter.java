@@ -19,13 +19,13 @@ public interface SaleInter {
 
      Sale returnSale(Integer saleNumber);
 
-     List<Map.Entry> salesFromTimeToTime(LocalDateTime from, LocalDateTime to);
+     List<Sale> salesFromTimeToTime(LocalDateTime from, LocalDateTime to);
 
-     List<Map.Entry> salesInDate(LocalDate day);
+     List<Sale> salesInDate(LocalDate day);
 
      List<Sale> salesDueToPrice(BigDecimal from, BigDecimal to);
 
-     Map.Entry<Integer, Sale> saleDueToSaleNumber(Integer saleId);
+     Sale saleDueToSaleNumber(Integer saleId);
 
     HashMap<Integer, Sale> getSales();
 

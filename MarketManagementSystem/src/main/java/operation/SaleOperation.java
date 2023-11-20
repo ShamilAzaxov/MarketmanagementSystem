@@ -71,10 +71,17 @@ public class SaleOperation {
                 int saleId = scan.nextInt();
                 System.out.print("Enter product's barcode you want to return back: ");
                 String barcode = scan.next();
-                saleInter.returnProductFromSale(saleId, barcode);
 
-                Sale onlySale = saleInter.getSales().values().stream().filter(sale1 -> sale1.getSaleItems().isEmpty()).findFirst().get();
-                if (saleInter.getSales().size() == 1 && onlySale.getSaleItems().isEmpty()) {
+                SaleItem returnedSaleItem = saleInter.getSales().get(saleId).getSaleItems().stream().
+                        filter(saleItem1 -> saleItem1.getProduct().getProductCode().equals(barcode)).findFirst().get();
+                saleInter.returnProductFromSale(saleId, barcode);
+                saleInter.getSales().get(saleId).setSalePrice(saleInter.getSales().
+                        get(saleId).getSalePrice().subtract(returnedSaleItem.getPrice()));
+
+                boolean isPresent = saleInter.getSales().values().stream().anyMatch(sale1 -> sale1.getSaleItems().isEmpty());
+                Sale onlySale;
+                if(isPresent){
+                    onlySale = saleInter.getSales().values().stream().filter(sale1 -> sale1.getSaleItems().isEmpty()).findFirst().get();
                     saleInter.returnSale(onlySale.getId());
                 }
 

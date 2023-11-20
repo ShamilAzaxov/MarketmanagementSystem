@@ -8,7 +8,7 @@ import service.inter.ProductInter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.NoSuchElementException;
 
 
 @Getter
@@ -60,14 +60,8 @@ public class ProductImpl implements ProductInter {
 
     @Override
     public Product getProductDueToBarcode(String productCode){
-        Product theProduct = null;
-        for (Product product : products){
-            if(product.getProductCode().equals(productCode)) {
-                theProduct = product;
-                break;
-            }
-        }
-        return theProduct;
+        return products.stream().filter(product -> product.getProductCode().
+                equals(productCode)).findFirst().orElseThrow(() -> new NoSuchElementException("There is no such element: "));
     }
 
     @Override
